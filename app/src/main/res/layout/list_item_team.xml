@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <data >
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="android.rezkyauliapratama.com.dicodingfootballclubmvi.data.model.Team" />
+
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="12dp"
+        app:cardUseCompatPadding="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                    android:id="@+id/iv_image"
+                android:layout_width="92dp"
+                android:layout_height="92dp"
+                android:layout_margin="4dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="8dp"
+                android:text="@{item.teamName}"
+                />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</layout>
