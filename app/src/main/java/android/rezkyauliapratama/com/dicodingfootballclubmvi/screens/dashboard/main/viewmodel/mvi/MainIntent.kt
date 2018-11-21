@@ -4,5 +4,5 @@ import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.mvi.
 
 
 sealed class MainIntent : MviIntent {
-    object InitialIntent : MainIntent()
+    data class SpinnerChanged(val s: String) : MainIntent()
 }

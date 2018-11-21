@@ -18,5 +18,4 @@ interface MviViewModel<I : MviIntent, S : MviState> {
 
   fun getLiveData(): LiveData<S>
 
-  fun cleanUp()
 }

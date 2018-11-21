@@ -64,10 +64,10 @@ abstract class BaseActivity<T : ViewModel,I : MviIntent, in S : MviState, U : Mv
     override fun onCreate(savedInstanceState: Bundle?) {
         inject()
         super.onCreate(savedInstanceState)
+        this.mViewModel =  initViewModel()
         initView()
         initDataBinding()
         setContentView(mViewMvc.dataBinding.root)
-        this.mViewModel =  initViewModel()
 
     }
 

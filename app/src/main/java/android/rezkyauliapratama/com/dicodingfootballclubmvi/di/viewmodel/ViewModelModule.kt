@@ -1,5 +1,6 @@
 package android.rezkyauliapratama.com.dicodingfootballclubmvi.di.viewmodel
 
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.event.viewmodel.EventObservableViewModel
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.viewmodel.MainViewModel
 import androidx.lifecycle.ViewModel
 import dagger.Binds
@@ -13,6 +14,11 @@ abstract class ViewModelModule{
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EventObservableViewModel::class)
+    abstract fun bindEventViewModel(eventViewModel: EventObservableViewModel) : ViewModel
 
 
 }

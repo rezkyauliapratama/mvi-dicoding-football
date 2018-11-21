@@ -7,19 +7,9 @@ import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.view
 interface  MainMviView : ObservableMviView<MainMviView.Listener> {
 
     interface Listener {
-        fun onSwipeRefresh()
+        fun onSpinnerChanged(s:String)
 
     }
 
-    fun bindItems(response: MutableList<Team>)
-
-    fun showProgressIndication()
-
-    fun hideProgressIndication()
-
-    fun showStatusIndication(message: String)
-
-    fun hideStatusIndication()
-    fun clearItem()
 
 }

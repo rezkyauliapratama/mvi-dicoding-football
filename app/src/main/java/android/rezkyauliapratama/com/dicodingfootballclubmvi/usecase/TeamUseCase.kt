@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 
-class TeamUseCaseImpl @Inject constructor(private val dataManager: DataManager) :
+class TeamUseCase @Inject constructor(private val dataManager: DataManager) :
     AnkoLogger{
 
 

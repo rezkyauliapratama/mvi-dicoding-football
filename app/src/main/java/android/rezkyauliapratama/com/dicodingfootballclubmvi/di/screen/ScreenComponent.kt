@@ -4,6 +4,7 @@ import dagger.Component
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.di.application.ApplicationComponent
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.di.viewmodel.ViewModelFactory
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.di.viewmodel.ViewModelModule
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.event.EventFragment
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.MainActivity
 
 /**
@@ -16,4 +17,5 @@ interface ScreenComponent{
     fun getViewModelFactory() : ViewModelFactory
 
     fun inject(loginActivity: MainActivity)
+    fun inject(eventFragment: EventFragment)
 }

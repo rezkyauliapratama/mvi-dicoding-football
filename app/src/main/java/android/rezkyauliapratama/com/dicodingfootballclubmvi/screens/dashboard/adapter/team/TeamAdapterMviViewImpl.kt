@@ -1,4 +1,4 @@
-package android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.adapter
+package android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.adapter.team
 
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.BR
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.R
@@ -13,7 +13,8 @@ import com.squareup.picasso.Picasso
 
 
 class TeamAdapterMviViewImpl(inflater: LayoutInflater, parent: ViewGroup?, viewMvvmFactory: ViewMvvmFactory) :
-    BaseMviView(), TeamAdapterMviView{
+    BaseMviView(),
+    TeamAdapterMviView {
 
 
     var binding: ListItemTeamBinding = DataBindingUtil.inflate(inflater, R.layout.list_item_team,parent,false)

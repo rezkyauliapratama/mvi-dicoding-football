@@ -3,5 +3,4 @@ package android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.mvi.MviAction
 
 sealed class MainAction : MviAction {
-  object LoadMainAction : MainAction()
 }

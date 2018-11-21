@@ -1,4 +1,4 @@
-package android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.adapter
+package android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.adapter.team
 
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.data.model.Team
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.ViewMvvmFactory
@@ -26,7 +26,9 @@ class TeamAdapter(private val viewMvvmFactory: ViewMvvmFactory):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewMvc = viewMvvmFactory.getTeamAdapterView(parent)
-        return ViewHolder(viewMvc)
+        return ViewHolder(
+            viewMvc
+        )
     }
 
     override fun getItemCount() = mItems.size

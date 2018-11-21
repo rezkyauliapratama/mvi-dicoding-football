@@ -16,11 +16,13 @@ import org.jetbrains.anko.AnkoLogger
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.ViewMvvmFactory
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.screennavigator.ScreensNavigator
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.ViewModelFactoryImpl
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.mvi.MviIntent
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.mvi.MviState
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common.views.MviView
 import androidx.databinding.ViewDataBinding
 import javax.inject.Inject
 
-abstract class BaseFragment<T : ViewModel, U : MviView, V : ViewDataBinding>  : Fragment(), AnkoLogger{
+abstract class BaseFragment<T : ViewModel,I : MviIntent, in S : MviState, U : MviView, V : ViewDataBinding>  : Fragment(), BaseMvi<I, S>, AnkoLogger{
 
 
     @Inject
@@ -81,16 +83,17 @@ abstract class BaseFragment<T : ViewModel, U : MviView, V : ViewDataBinding>  : 
         initView(container)
         initDataBinding()
 
-        return mViewMvc.dataBinding?.root
+        return mViewMvc.dataBinding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onStart() {
+        super.onStart()
         registerListener()
+        bind()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onStop() {
+        super.onStop()
         unregisterListener()
     }
 }

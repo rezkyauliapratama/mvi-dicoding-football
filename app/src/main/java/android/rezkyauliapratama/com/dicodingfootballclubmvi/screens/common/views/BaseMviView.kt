@@ -9,11 +9,11 @@ abstract class BaseMviView: MviView {
 
     override lateinit var dataBinding: ViewDataBinding
 
-    protected fun getContext(): Context? {
+    protected fun getContext(): Context {
         return dataBinding.root.context
     }
 
     protected fun getString(@StringRes id: Int): String? {
-        return getContext()?.getString(id)
+        return getContext().getString(id)
     }
 }

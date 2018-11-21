@@ -1,9 +1,13 @@
 package android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.common
 
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.event.mvi.EventResult
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.event.mvi.EventState
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.viewmodel.mvi.MainResult
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.viewmodel.mvi.MainState
+import com.google.gson.Gson
 import io.reactivex.functions.BiFunction
 import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.error
 import javax.inject.Inject
 
 class ReducerFactory @Inject constructor(): AnkoLogger {
@@ -16,18 +20,19 @@ class ReducerFactory @Inject constructor(): AnkoLogger {
      * This is basically like a big switch statement of all possible types for the [MviResult]
      */
 
-    val mainReducer = BiFunction { previousState: MainState, result: MainResult ->
+    val eventReducer = BiFunction { previousState: EventState, result: EventResult ->
+        error { "previousState : ${Gson().toJson(previousState)}" }
         when (result) {
-            is MainResult.LoadMainResult -> when (result) {
-                is MainResult.LoadMainResult.Success ->{
-                    val tasks = result.teams
+            is EventResult.LoadEventResult -> when (result) {
+                is EventResult.LoadEventResult.Success ->{
+                    val items = result.events
                     previousState.copy(
                         isLoading = false,
-                        tasks = tasks
+                        events = items
                     )
                 }
-                is MainResult.LoadMainResult.Failure -> previousState.copy(isLoading = false, error = result.error.localizedMessage)
-                is MainResult.LoadMainResult.InFlight -> previousState.copy(isLoading = true)
+                is EventResult.LoadEventResult.Failure -> previousState.copy(isLoading = false, error = result.error.localizedMessage)
+                is EventResult.LoadEventResult.InFlight -> previousState.copy(isLoading = true)
             }
         }
     }
