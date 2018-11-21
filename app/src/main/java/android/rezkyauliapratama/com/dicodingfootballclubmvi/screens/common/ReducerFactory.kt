@@ -21,7 +21,6 @@ class ReducerFactory @Inject constructor(): AnkoLogger {
      */
 
     val eventReducer = BiFunction { previousState: EventState, result: EventResult ->
-        error { "previousState : ${Gson().toJson(previousState)}" }
         when (result) {
             is EventResult.LoadEventResult -> when (result) {
                 is EventResult.LoadEventResult.Success ->{

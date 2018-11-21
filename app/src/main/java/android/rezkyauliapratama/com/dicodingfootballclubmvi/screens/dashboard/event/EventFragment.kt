@@ -10,6 +10,8 @@ import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.e
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.event.viewmodel.EventObservableViewModel
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.MainActivity
 import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.viewmodel.MainViewModel
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.viewmodel.mvi.MainAction
+import android.rezkyauliapratama.com.dicodingfootballclubmvi.screens.dashboard.main.viewmodel.mvi.MainIntent
 import android.view.ViewGroup
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
@@ -79,10 +81,14 @@ class EventFragment : BaseFragment<EventObservableViewModel,EventIntent,EventSta
         observe(mViewModel.getLiveData()) { render(it) }
 
         observe(mainViewModel.spinnerLD){
-            error { "$it | $argumentType" }
-            changeLeagueIntentPublisher.onNext(
-                EventIntent.LoadLeagueIntent(it,argumentType)
-            )
+            when (it){
+                is MainIntent.SpinnerChanged -> {
+                    changeLeagueIntentPublisher.onNext(
+                        EventIntent.LoadLeagueIntent(it.s,argumentType)
+                    )
+                }
+            }
+
         }
         // Pass the UI's intents to the ViewModel
         mViewModel.processIntents(intents())
