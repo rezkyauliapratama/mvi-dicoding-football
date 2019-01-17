@@ -126,8 +126,6 @@ class MainMviViewImpl(inflater: LayoutInflater, parent: ViewGroup?, viewMvvmFact
 
         private val NUMITEMS = 2
 
-
-
         override fun getCount(): Int {
             return NUMITEMS
         }
